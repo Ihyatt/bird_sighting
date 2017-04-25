@@ -39,13 +39,30 @@ def main_page():
 	# 	if current_hour == sight.time:
 	# 		birds_time[sight.bird] += sight.quantity
 
+	return render_template("index.html")
 
+@app.route('/submit-bird', methods=['POST'])
+def add_sighting():
+
+	bird = request.form.get("bird").lower()
+	quantity = request.form.get("quantity")
+
+	now = datetime.datetime.now()
+	now_hour = datetime.time(now.hour)
+	current_hour = str(now_hour)[:-3]
+
+	sighting = Sighting(bird=bird, quantity=quantity, time=current_hour)
+	db.session.add(sighting)
+	db.session.commit()
+
+
+	return "sighting submitted"
 
 	
 
 
 
-	return render_template("index.html")
+	
 
 
 if __name__ == "__main__":

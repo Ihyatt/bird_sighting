@@ -5,27 +5,34 @@
 
 <div class="row">
 <div class="col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-6 col-xs-offset-1">
-Please log in bird sightings
+	 <img src="/static/img/bird.jpg" class="img-responsive " alt="Cinque Terre" width="500" style="display:inline-block;">
+		
+	<h3>Please log in bird sightings</h3>
+	<label>Species</label>
+        <input type="text" class="form-control" placeholder="Robin..." id="bird_species">
+    <label>Quantity</label>
+        <input type="number" class="form-control" placeholder="2..." id="quantity">
+
+    <button type="button" id="add-sighting"class="btn btn-default"> Add Sighting </button>
 
 
 
 </div>
 <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1">
-Search for bird
+<h3>Search for bird</h3>
 
       <div class="input-group">
-         <span class="input-group-addon glyphicon glyphicon-search search-movies"  id="basic-addon1"></span>
-         <input type="text" id="search" class="form-control" placeholder="Titles, peoples, genres" aria-describedby="basic-addon1">
+         <span class="input-group-addon glyphicon glyphicon-search search-sighting"  id="basic-addon1"></span>
+         <input type="text" id="search" class="form-control" placeholder="Chickadee..." aria-describedby="basic-addon1">
       </div>
-       <button class = "search-sighting" type="button">Search</button>
-
+      
 <ul id="bird-sighting">
 </ul>
 </div>
 </div>
 
 <script>
-
+// JS for return Search
 function showChanceSighting(result){
 	$("#bird-sighting").append("<li>" + result + "</li>")
 	$("#search").val("")
@@ -45,5 +52,38 @@ function getProbability(){
 
 $(".search-sighting").click(getProbability)
 
+
+
+// JS for submitting bird sightings
+
+
+function sightingSubmitted(){
+	console.log("Success")
+}
+
+function submitSighting(){
+	var submitBird = $("#bird_species").val();
+	var submitQuantity = $("#quantity").val();
+
+	var submission = {
+		"bird": submitBird,
+		"quantity": submitQuantity
+	};
+
+	$.post("/submit-bird", submission, sightingSubmitted);
+	$("#bird_species").val("")
+	$("#quantity").val("")
+}
+
+$("#add-sighting").click(submitSighting)
+
+
+
+
 </script>
 {% endblock %}
+
+
+
+
+
