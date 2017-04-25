@@ -1,0 +1,55 @@
+
+{
+  "bird_sightings": [
+    {
+      "quantity": 3,
+      "bird": "robin",
+      "time": "03:00"
+    },
+    {
+      "quantity": 1,
+      "bird": "bluejay",
+      "time": "13:00"    
+    },
+    {
+      "quantity": 10,
+      "bird": "bluejay",
+      "time": "07:00"
+    },
+    {
+      "quantity": 3,
+      "bird": "chickadee",
+      "time": "01:00"
+    },
+    {
+      "quantity": 3,
+      "bird": "chickadee",
+      "time": "11:00"
+    },
+    {
+      "quantity": 4,
+      "bird": "robin",
+      "time": "23:00"
+    },
+    {
+      "quantity": 1,
+      "bird": "robin",
+      "time": "22:00"
+    },
+    {
+      "quantity": 1,
+      "bird": "bluejay",
+      "time": "14:00"
+    },
+    {
+      "quantity": 20,
+      "bird": "robin",
+      "time": "24:00"
+    },
+    {
+      "quantity": 1,
+      "bird": "robin",
+      "time": "21:00"
+    }
+  ]
+}

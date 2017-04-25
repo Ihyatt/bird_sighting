@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="row">
+<div class="col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-6 col-xs-offset-1">
+Please log in bird sightings
+
+
+
+</div>
+<div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1">
+Search for bird
+
+      <div class="input-group">
+         <span class="input-group-addon glyphicon glyphicon-search search-movies"  id="basic-addon1"></span>
+         <input type="text" id="search" class="form-control" placeholder="Titles, peoples, genres" aria-describedby="basic-addon1">
+      </div>
+       <button class = "search-sighting" type="button">Search</button>
+
+<ul id="bird-sighting">
+</ul>
+</div>
+</div>
+
+<script>
+
+function showChanceSighting(result){
+	$("#bird-sighting").append("<li>" + result + "</li>")
+	$("#search").val("")
+
+}
+
+function getProbability(){
+	var searchBird =  $("#search").val();
+
+	var search = {
+		"search_bird": searchBird
+	};
+	$.get("/return-search", search, showChanceSighting);
+
+
+}
+
+$(".search-sighting").click(getProbability)
+
+</script>
+{% endblock %}
