@@ -52,6 +52,8 @@ While using an AJAX get request, all birds are queried, looking specifically at 
 
 ##### General Setup
 * Set up and activate a python virtualenv, and install all dependencies:
+   * `virtualenv env`
+   * `source env/bin/activate`
    * `pip install -r requirements.txt`
 * Make sure you have PostgreSQL running. Create a new database named bird_sighting:
    * `createdb bird_sighting`
