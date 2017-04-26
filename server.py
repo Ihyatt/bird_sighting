@@ -1,5 +1,6 @@
 """Server for Bird Sighting Challenge"""
 
+import os
 from jinja2 import StrictUndefined
 import psycopg2
 from model import Sighting, connect_to_db, db
@@ -113,11 +114,12 @@ def view_all_birds():
 
 
 if __name__ == "__main__":
- 
-    app.debug = False
 
-    connect_to_db(app)
-
-    # Use the DebugToolbar
-    DebugToolbarExtension(app)
-    app.run()
+	app.debug=False
+	app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+	connect_to_db(app, os.environ.get("DATABASE_URL"))
+	# DEBUG = "NO_DEBUG" not in os.environ
+	PORT = int(os.environ.get("PORT", 5000))
+	
+	app.run(host="0.0.0.0", port=PORT)
+	
