@@ -33,57 +33,41 @@
 
 <script>
 // JS for return Search
-function showChanceSighting(result){
-	$("#bird-sighting").append("<li>" + result + "</li>")
+function showChanceSighting(result) {
+	var returnedBird = result;
+	for (var key in returnedBird){
+	$("#bird-sighting").append("<li>" + returnedBird[key] + key + "</li>")
+ };
+
 	$("#search").val("")
-
 }
-
-function getProbability(){
-	var searchBird =  $("#search").val();
-
-	var search = {
-		"search_bird": searchBird
+function getProbability() {
+	var searchBird = $("#search").val();
+	console.log(searchBird)
+	var search_bird = {
+		"bird": searchBird
 	};
-	$.get("/return-search", search, showChanceSighting);
-
-
+	$.get("/return-search.json", search_bird, showChanceSighting);
 }
 
 $(".search-sighting").click(getProbability)
 
-
-
 // JS for submitting bird sightings
-
-
-function sightingSubmitted(){
+function sightingSubmitted() {
 	console.log("Success")
 }
-
-function submitSighting(){
+function submitSighting() {
 	var submitBird = $("#bird_species").val();
 	var submitQuantity = $("#quantity").val();
-
 	var submission = {
 		"bird": submitBird,
 		"quantity": submitQuantity
 	};
-
 	$.post("/submit-bird", submission, sightingSubmitted);
 	$("#bird_species").val("")
 	$("#quantity").val("")
 }
-
 $("#add-sighting").click(submitSighting)
-
-
-
-
 </script>
+
 {% endblock %}
-
-
-
-
-
