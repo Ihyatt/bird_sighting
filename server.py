@@ -19,6 +19,7 @@ app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
 def main_page():
+	"""Returns le main page"""
 
 
 	return render_template("index.html")
@@ -26,8 +27,7 @@ def main_page():
 @app.route('/submit-bird', methods=['POST'])
 def add_sighting():
 
-	bird = request.form.get("bird").lower()
-	print bird
+	bird = request.form.get("bird").lower().strip()
 	quantity = request.form.get("quantity")
 
 	now = datetime.datetime.now()
@@ -44,15 +44,14 @@ def add_sighting():
 
 @app.route("/return-search.json", methods=['GET'])
 def view_sightings():
+	"""Returns all time(s) to look for a specific bird"""
 
-	bird = request.args.get("bird").lower()
-	print bird
+	bird = request.args.get("bird").lower().strip()
 	probability = {}
 	sightings = Sighting.query.filter(Sighting.bird == bird).all()
 	most_time_sightings = 0
 	times = {}
 	
-
 	for sight in sightings:
 
 		if probability.get(sight.time) == None:
@@ -79,30 +78,28 @@ def view_sightings():
 
 @app.route("/return-all-birds.json", methods=['GET'])
 def view_all_birds():
+	"""Returns all birds with percentage likelihood you will see them at a given time"""
 	sightings = Sighting.query.all()
 
 	now = datetime.datetime.now()
-	now_hour = datetime.time(now.hour, now.minute, now.second)
-	current_time = str(now_hour)
+	now_time = datetime.time(now.hour, now.minute, now.second)
+	current_time = str(now_time)
 	birds = {}
-	birds_time = {}
+
 	birds_prob = {}
 
 	for sight in sightings:
 		if birds.get(sight.bird) == None:
-			birds[sight.bird] = sight.quantity
+			birds[sight.bird] = [0, 0]
+
+			birds[sight.bird][1] = sight.quantity
 		else: 
-			birds[sight.bird] += sight.quantity
-
-	for sight in sightings: 
-		if birds_time.get(sight.bird) == None:
-			birds_time[sight.bird] = 0 
-
+			birds[sight.bird][1] += sight.quantity
 		if current_time == sight.time:
-			birds_time[sight.bird] += sight.quantity
+			birds[sight.bird][0] += sight.quantity
 
 	for bird in birds:
-		birds_prob[bird] = int((float(birds_time[bird]) / float(birds[bird])) * 100)
+		birds_prob[bird] = int((float(birds[bird][0]) / float(birds[bird][1])) * 100)
 
 	return jsonify(birds_prob)
 
