@@ -4,52 +4,52 @@
     {
       "quantity": 3,
       "bird": "robin",
-      "time": "03:00"
+      "time": "03:25:15"
     },
     {
       "quantity": 1,
       "bird": "bluejay",
-      "time": "13:00"    
+      "time": "13:00:00"    
     },
     {
       "quantity": 10,
       "bird": "bluejay",
-      "time": "07:00"
+      "time": "07:01:20"
     },
     {
       "quantity": 3,
       "bird": "chickadee",
-      "time": "01:00"
+      "time": "01:05:30"
     },
     {
       "quantity": 3,
       "bird": "chickadee",
-      "time": "11:00"
+      "time": "11:30:01"
     },
     {
       "quantity": 4,
       "bird": "robin",
-      "time": "23:00"
+      "time": "23:05:05"
     },
     {
       "quantity": 1,
       "bird": "robin",
-      "time": "22:00"
+      "time": "22:10:05"
     },
     {
       "quantity": 1,
       "bird": "bluejay",
-      "time": "14:00"
+      "time": "14:00:00"
     },
     {
       "quantity": 20,
       "bird": "robin",
-      "time": "24:00"
+      "time": "24:40:20"
     },
     {
       "quantity": 1,
       "bird": "robin",
-      "time": "21:00"
+      "time": "21:03:40"
     }
   ]
 }

@@ -30,10 +30,9 @@ def add_sighting():
 	quantity = request.form.get("quantity")
 
 	now = datetime.datetime.now()
-	now_hour = datetime.time(now.hour)
-	current_hour = str(now_hour)[:-3]
+	now_time = str(datetime.time(now.hour, now.minute, now.second))
 
-	sighting = Sighting(bird=bird, quantity=quantity, time=current_hour)
+	sighting = Sighting(bird=bird, quantity=quantity, time=now_time)
 	db.session.add(sighting)
 	db.session.commit()
 
