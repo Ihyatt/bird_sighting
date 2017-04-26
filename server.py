@@ -3,8 +3,9 @@
 from jinja2 import StrictUndefined
 import psycopg2
 from model import Sighting, connect_to_db, db
-from datetime import datetime
 import datetime
+
+
 
 from flask import Flask, render_template, request, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
@@ -50,9 +51,10 @@ def view_sightings():
 	sightings = Sighting.query.filter(Sighting.bird == bird).all()
 	most_time_sightings = 0
 	times = {}
-	print sightings
+	
 
 	for sight in sightings:
+
 		if probability.get(sight.time) == None:
 			probability[sight.time] = sight.quantity
 		else:
@@ -80,8 +82,8 @@ def view_all_birds():
 	sightings = Sighting.query.all()
 
 	now = datetime.datetime.now()
-	now_hour = datetime.time(now.hour)
-	current_hour = str(now_hour)[:-3]
+	now_hour = datetime.time(now.hour, now.minute, now.second)
+	current_time = str(now_hour)
 	birds = {}
 	birds_time = {}
 	birds_prob = {}
@@ -96,7 +98,7 @@ def view_all_birds():
 		if birds_time.get(sight.bird) == None:
 			birds_time[sight.bird] = 0 
 
-		if current_hour == sight.time:
+		if current_time == sight.time:
 			birds_time[sight.bird] += sight.quantity
 
 	for bird in birds:
