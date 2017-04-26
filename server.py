@@ -14,7 +14,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 
 app = Flask(__name__)
-app.secret_key = "ABC"
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "ABC")
 app.jinja_env.undefined = StrictUndefined
 
 
@@ -122,4 +122,3 @@ if __name__ == "__main__":
 	PORT = int(os.environ.get("PORT", 5000))
 	
 	app.run(host="0.0.0.0", port=PORT)
-	
