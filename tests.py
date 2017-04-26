@@ -74,7 +74,7 @@ class TestBirdSightingDatabase(TestCase):
         # In case this is run more than once, empty out existing data
         Sighting.query.delete()
 
-        # Add sample users and petitions
+        # Add sample sighting
         self.bird = Sighting(bird='owl', quantity= 3, time="11:00:00")
 
         # add all to the database
