@@ -33,6 +33,8 @@ Le Bird is a mini project created for a company coding challenge. The meat of th
 
 
 #### <a name="main"></a>Main Page
+![le bird](https://cloud.githubusercontent.com/assets/11432315/25453779/11c710ac-2a7f-11e7-9b88-8b8ae6725cdb.gif)
+
 
 ##### Log Le Bird Sightings
 The meat of this is an AJAX post request that grabs the species of bird and quantity. The datetime module is used to grab the exact hour, minute and second the sighting has ocurred and is stored in the database. 

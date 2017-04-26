@@ -67,7 +67,7 @@ def view_sightings():
 	for sight in probability:
 		if probability[sight] == most_time_sightings:
 			times[sight] = bird
-	print times
+
 
 
 	return jsonify(times)
@@ -114,7 +114,7 @@ def view_all_birds():
 
 if __name__ == "__main__":
  
-    app.debug = True
+    app.debug = False
 
     connect_to_db(app)
 
