@@ -19,7 +19,8 @@
 
 </div>
 <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1">
-<h3>Search for bird</h3>
+<div class="row">	
+<h3>When to Find Le Bird</h3>
 
       <div class="input-group">
          <span class="input-group-addon glyphicon glyphicon-search search-sighting"  id="basic-addon1"></span>
@@ -29,13 +30,25 @@
 <ul id="bird-sighting">
 </ul>
 </div>
+
+<div class="row">
+	<button type="button" id="view-probabilities"class="btn btn-default"> View le Birds and Probability </button>
+	<ul id="all-birds">
+</ul>
+
+</div>
+
+</div>
 </div>
 
 <script>
 // JS for return Search
-function showChanceSighting(result) {
-	var returnedBird = result;
+function showChanceSighting(results) {
+	var returnedBird = results;
+	$("#bird-sighting").append("Here are the times you should check out Le Bird!")
+
 	for (var key in returnedBird){
+
 	$("#bird-sighting").append("<li>" + returnedBird[key] + key + "</li>")
  };
 
@@ -48,6 +61,7 @@ function getProbability() {
 		"bird": searchBird
 	};
 	$.get("/return-search.json", search_bird, showChanceSighting);
+	$("#bird-sighting").html("")
 }
 
 $(".search-sighting").click(getProbability)
@@ -68,6 +82,29 @@ function submitSighting() {
 	$("#quantity").val("")
 }
 $("#add-sighting").click(submitSighting)
+
+
+
+
+// JS for wanting to see all birds and probability 
+
+function showAllBirds(results){
+	var returnedAllBirds = results;
+
+	for (var key in returnedAllBirds){
+	$("#all-birds").append("<li>" + key + " " + returnedAllBirds[key] + "%" +  "</li>")
+ };
+
+
+}
+
+function viewAllBirds() {
+	$.get("/return-all-birds.json", showAllBirds);
+	$("#all-birds").html("")
+}
+
+
+$("#view-probabilities").click(viewAllBirds)
 </script>
 
 {% endblock %}
