@@ -5,12 +5,12 @@
 
 <div class="row" >
 
-	<div class="col-md-4  col-sm-4  col-xs-4 col-xs-offset-1" style="background-color:black; opacity: 0.5;padding: 50px;">
+	<div class="col-md-4  col-sm-4  col-xs-4 col-xs-offset-1" >
 
-	<div class="row">
+	<div class="row" style="background-color:black; opacity: 0.5; padding: 50px; margin: 20px;">
 
 
-		<h3>Log le bird sightings</h3>
+		<h4>Log le bird sightings</h4>
 		<div style="margin:5px;">
 		<label>le species</label>
 	        <input type="text" class="form-control" placeholder="Robin..." id="bird_species">
@@ -26,10 +26,12 @@
     text-transform: uppercase;"> add le sighting </button>
    	</div>
 
+
 	</div>
 
-	<div class="row">	
-	<h3>When to find le bird</h3>
+	<div class="row" style="background-color:black; opacity: 0.5;padding: 50px; margin: 20px;">	
+
+	<h4>When to find le bird</h4>
 	<div style="margin:5px;">
 
 	      <div class="input-group">
@@ -40,16 +42,20 @@
 	<div style="margin:5px;">   
 	<ul id="bird-sighting">
 	</ul>
-	<div>
 	</div>
+</div>
 
-	<div class="row">
+	<div class="row" style="background-color:black; opacity: 0.5;padding: 50px; margin: 20px;">
+		<div style="margin:5px;">
 		<button type="button" id="view-probabilities"class="btn btn-default" style="
     font-size: 12px;
     font-weight: 300;
     text-transform: uppercase;"> le birds and probability </button>
+</div>
+<div style="margin:5px;">
 		<ul id="all-birds">
 	</ul>
+</div>
 
 	</div>
 
@@ -85,7 +91,7 @@ $(".search-sighting").click(getProbability)
 
 // JS for submitting bird sightings
 function sightingSubmitted() {
-	console.log("Success")
+	// check for succes of AJAX request
 }
 function submitSighting() {
 	var submitBird = $("#bird_species").val();
@@ -107,6 +113,7 @@ $("#add-sighting").click(submitSighting)
 
 function showAllBirds(results){
 	var returnedAllBirds = results;
+		$("#all-birds").append("<div style='margin-top:10px;margin-bottom:10px;'>" + "Here are the chances you have to see le birds!" + "</div>")
 
 	for (var key in returnedAllBirds){
 	$("#all-birds").append("<li>" + key + " " + returnedAllBirds[key] + "%" +  "</li>")
