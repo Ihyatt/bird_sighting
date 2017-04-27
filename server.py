@@ -4,6 +4,7 @@ import os
 from jinja2 import StrictUndefined
 import psycopg2
 from model import Sighting, connect_to_db, db
+
 import datetime
 
 
@@ -52,8 +53,12 @@ def view_sightings():
 	sightings = Sighting.query.filter(Sighting.bird == bird).all()
 	most_time_sightings = 0
 	times = {}
-	
+
+
+
+
 	for sight in sightings:
+
 
 		if probability.get(sight.time) == None:
 			probability[sight.time] = sight.quantity
