@@ -59,8 +59,6 @@ While using an AJAX get request, all birds are queried, looking specifically at 
    * `createdb bird_sighting`
 * Create the tables in your database:
    * `python -i model.py`
-* Then seed database
-   * `python seed.py`
 * Start up the flask server:
    * `python server.py`
 * Go to localhost:5000 to see the web app
