@@ -26,17 +26,19 @@ li {
   opacity: 0.7; 
   padding: 50px; 
   margin: 20px;
-  color:white;
+
 }
 
 button {
     font-size: 12px;
     font-weight: 300;
     text-transform: uppercase;
+
 }
 
 .le-bird {
   margin: 5px;
+  color:white;
 }
 
 /*nav bar decoration*/
