@@ -1,10 +1,46 @@
 
+/*general css*/
+body {
+  color:white; background-image: url(/static/img/audoban.jpg);    background-size: cover; background-attachment: fixed; 
+  font-size: 11px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+
 li {
 	list-style-type: none;
 }
 
 
+/*base css*/
+.le-bird-probability {
+  margin:5px;
+  text-align:center;
+}
+
+.le-bird-box {
+  background-color:black; 
+  opacity: 0.7; 
+  padding: 50px; 
+  margin: 20px;
+}
+
+button {
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.le-bird {
+  margin: 5px;
+}
+
 /*nav bar decoration*/
+.navbar .navbar-inverse{
+  margin-bottom: 0px;
+}
+
 .navbar-inverse {
   background-color: #3E3F3A;
   border-color: #3E3F3A;
@@ -25,4 +61,5 @@ li {
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
   border-color: #3E3F3A
 }
+
 
