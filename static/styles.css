@@ -15,6 +15,9 @@ li {
 	list-style-type: none;
 }
 
+label {
+  color:white;
+}
 
 /*base css*/
 .le-bird-probability {
