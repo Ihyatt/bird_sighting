@@ -32,9 +32,11 @@ function submitSighting() {
 		"bird": submitBird,
 		"quantity": submitQuantity
 	};
-	$.post("/submit-bird", submission, sightingSubmitted);
-	$("#bird_species").val("")
-	$("#quantity").val("")
+	if (submitBird.trim()) {
+		$.post("/submit-bird", submission, sightingSubmitted);
+		$("#bird_species").val("")
+		$("#quantity").val("")
+}
 }
 $("#add-sighting").click(submitSighting)
 
