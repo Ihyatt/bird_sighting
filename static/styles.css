@@ -9,6 +9,13 @@ button {
 
 }
 
+h4 {
+  color:white;
+}
+
+label {
+  color:white;
+}
 
 body {
   color:white; 
@@ -38,9 +45,6 @@ li {
 
 }
 
-
-h4 {
-   color:white;
 }
 .le-bird {
   margin: 5px;
