@@ -26,7 +26,7 @@ function sightingSubmitted() {
 	// check for succes of AJAX request
 }
 function submitSighting() {
-	console.log("here")
+	
 	var submitBird = $("#bird_species").val();
 	var submitQuantity = $("#quantity").val();
 	var submission = {
@@ -34,7 +34,6 @@ function submitSighting() {
 		"quantity": submitQuantity
 	};
 	if (submitBird.trim()) {
-		console.log("here")
 		$.post("/submit-bird", submission, sightingSubmitted);
 		$("#bird_species").val("")
 		$("#quantity").val("")
