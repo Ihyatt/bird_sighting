@@ -4,22 +4,18 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 import os
 
-
-
-
-
 db = SQLAlchemy()
 
 ##############################################################################
 # Model definitions
 
 class Sighting(db.Model):
-	__tablename__ = "sightings"
+    __tablename__ = "sightings"
 
-	sighting_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-	quantity = db.Column(db.Integer)
-	bird = db.Column(db.String(100), nullable=True)
-	time = db.Column(db.String)
+    sighting_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    quantity = db.Column(db.Integer)
+    bird = db.Column(db.String(100), nullable=True)
+    time = db.Column(db.String)
 
 
 

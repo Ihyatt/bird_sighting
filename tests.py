@@ -1,10 +1,7 @@
 import unittest
 from unittest import TestCase
-
 from model import Sighting, connect_to_db, db
-
 from server import app
-
 
 ###############################################################################
 

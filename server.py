@@ -4,14 +4,10 @@ import os
 from jinja2 import StrictUndefined
 import psycopg2
 from model import Sighting, connect_to_db, db
-
 import datetime
-
-
 
 from flask import Flask, render_template, request, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
-
 
 
 app = Flask(__name__)
@@ -23,22 +19,18 @@ app.jinja_env.undefined = StrictUndefined
 def main_page():
 	"""Returns le main page"""
 
-
 	return render_template("index.html")
 
 @app.route('/submit-bird', methods=['POST'])
 def add_sighting():
-
+	
 	bird = request.form.get("bird").lower().strip()
 	quantity = request.form.get("quantity")
-
 	now = datetime.datetime.now()
-	now_time = str(datetime.time(now.hour, now.minute, now.second))
-
+	now_time = str(datetime.time(now.hour, now.minute, now.second))[:-1]
 	sighting = Sighting(bird=bird, quantity=quantity, time=now_time)
 	db.session.add(sighting)
 	db.session.commit()
-
 
 	return "sighting submitted"
 
@@ -53,69 +45,45 @@ def view_sightings():
 	sightings = Sighting.query.filter(Sighting.bird == bird).all()
 	most_time_sightings = 0
 	times = {}
-
-
-
-
+	
 	for sight in sightings:
-
-
 		if probability.get(sight.time) == None:
 			probability[sight.time] = sight.quantity
 		else:
 			probability[sight.time] += sight.quantity
-
 		if probability[sight.time] > most_time_sightings:
-		
 			most_time_sightings = probability[sight.time]
-
-
+			
 	for sight in probability:
 		if probability[sight] == most_time_sightings:
 			times[sight] = bird
 
-
-
 	return jsonify(times)
-
-
-
-
 
 @app.route("/return-all-birds.json", methods=['GET'])
 def view_all_birds():
 	"""Returns all birds with percentage likelihood you will see them at a given time"""
+	
 	sightings = Sighting.query.all()
-
 	now = datetime.datetime.now()
-	now_time = datetime.time(now.hour, now.minute, now.second)
-	current_time = str(now_time)
+	now_time = str(datetime.time(now.hour, now.minute, now.second))[:-1]
+	
 	birds = {}
-
 	birds_prob = {}
 
 	for sight in sightings:
 		if birds.get(sight.bird) == None:
 			birds[sight.bird] = [0, 0]
-
 			birds[sight.bird][1] = sight.quantity
 		else: 
 			birds[sight.bird][1] += sight.quantity
-		if current_time == sight.time:
+		if now_time == sight.time:
 			birds[sight.bird][0] += sight.quantity
 
 	for bird in birds:
 		birds_prob[bird] = int((float(birds[bird][0]) / float(birds[bird][1])) * 100)
 
 	return jsonify(birds_prob)
-
-
-
-	
-
-
-
-	
 
 
 if __name__ == "__main__":
