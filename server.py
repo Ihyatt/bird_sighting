@@ -27,7 +27,7 @@ def add_sighting():
 	bird = request.form.get("bird").lower().strip()
 	quantity = request.form.get("quantity")
 	now = datetime.datetime.now()
-	now_time = str(datetime.time(now.hour, now.minute, now.second))[:-1]
+	now_time = str(datetime.time(now.hour, now.minute, now.second))[:-1] + "0"
 	sighting = Sighting(bird=bird, quantity=quantity, time=now_time)
 	db.session.add(sighting)
 	db.session.commit()
@@ -66,7 +66,7 @@ def view_all_birds():
 	
 	sightings = Sighting.query.all()
 	now = datetime.datetime.now()
-	now_time = str(datetime.time(now.hour, now.minute, now.second))[:-1]
+	now_time = str(datetime.time(now.hour, now.minute, now.second))[:-1] + "0"
 	
 	birds = {}
 	birds_prob = {}
