@@ -34,8 +34,6 @@ def add_sighting():
 
 	return "sighting submitted"
 
-
-
 @app.route("/return-search.json", methods=['GET'])
 def view_sightings():
 	"""Returns all time(s) to look for a specific bird"""
@@ -84,7 +82,6 @@ def view_all_birds():
 		birds_prob[bird] = int((float(birds[bird][0]) / float(birds[bird][1])) * 100)
 
 	return jsonify(birds_prob)
-
 
 if __name__ == "__main__":
 
