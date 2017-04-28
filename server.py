@@ -41,7 +41,7 @@ def view_sightings():
 	bird = request.args.get("bird").lower().strip()
 	probability = {}
 	sightings = Sighting.query.filter(Sighting.bird == bird).all()
-	most_time_sightings = 0
+	most_sightings = 0
 	times = {}
 	
 	for sight in sightings:
@@ -49,11 +49,11 @@ def view_sightings():
 			probability[sight.time] = sight.quantity
 		else:
 			probability[sight.time] += sight.quantity
-		if probability[sight.time] > most_time_sightings:
-			most_time_sightings = probability[sight.time]
+		if probability[sight.time] > most_sightings:
+			most_sightings = probability[sight.time]
 			
 	for sight in probability:
-		if probability[sight] == most_time_sightings:
+		if probability[sight] == most_sightings:
 			times[sight] = bird
 
 	return jsonify(times)
