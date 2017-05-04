@@ -26,9 +26,8 @@ def add_sighting():
 	
 	bird = request.form.get("bird").lower().strip()
 	quantity = request.form.get("quantity")
-	now = datetime.datetime.now()
-	now_time = str(datetime.time(now.hour, now.minute, now.second))[:-1] + "0"
-	sighting = Sighting(bird=bird, quantity=quantity, time=now_time)
+	time = request.form.get("time")
+	sighting = Sighting(bird=bird, quantity=quantity, time=time)
 	db.session.add(sighting)
 	db.session.commit()
 
@@ -63,8 +62,7 @@ def view_all_birds():
 	"""Returns all birds with percentage likelihood you will see them at a given time"""
 	
 	sightings = Sighting.query.all()
-	now = datetime.datetime.now()
-	now_time = str(datetime.time(now.hour, now.minute, now.second))[:-1] + "0"
+	time = request.args.get("time")
 	
 	birds = {}
 	birds_prob = {}
@@ -75,7 +73,7 @@ def view_all_birds():
 			birds[sight.bird][1] = sight.quantity
 		else: 
 			birds[sight.bird][1] += sight.quantity
-		if now_time == sight.time:
+		if time == sight.time:
 			birds[sight.bird][0] += sight.quantity
 
 	for bird in birds:

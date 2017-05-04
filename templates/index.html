@@ -5,13 +5,18 @@
       <div class="row le-bird-box">
          <h4>Log le bird sightings</h4>
          <div class="le-bird" style="margin:10px">
-           
             <label>le species</label>
             <input type="text" class="form-control" placeholder="ROBIN..." id="bird_species">
          </div>
          <div class="le-bird" style="margin:10px">
             <label>le quantity</label>
             <input type="number" class="form-control" placeholder="2..." id="quantity">
+         </div>
+         <div class="form-group row le-bird" style="margin:10px">
+            <label for="time-input" class="col-2 col-form-label">le time</label>
+            <div class="col-10">
+               <input class="form-control" type="time" value="13:45:50" step="1" id="time-submit">
+            </div>
          </div>
          <div class="le-bird" style="margin:10px">
             <button type="button" id="add-sighting"class="btn btn-default" style="font-size: 12px;
@@ -34,7 +39,13 @@
          </div>
       </div>
       <div class="row le-bird-box">
-         <div class="le-bird-probability">
+         <div class="form-group row le-bird" style="margin:10px">
+            <label for="time-input" class="col-2 col-form-label">le time</label>
+            <div class="col-10">
+               <input class="form-control" type="time" value="02:45:50" step="1" id="time-probability">
+            </div>
+         </div>
+         <div class="le-bird-probability" style="margin:10px">
             <button type="button" id="view-probabilities"class="btn btn-default" style="font-size: 12px;
                font-weight: 300;
                text-transform: uppercase;

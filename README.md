@@ -1,4 +1,4 @@
-# [Le Bird](https://birdsighting.herokuapp.com/)
+# [Le Birds](https://lebirds.herokuapp.com/)
 Le Bird is a mini project created for a company coding challenge. The meat of this project is a learning algorithm that accurately predicts the likelihood of seeing a paticular bird or birds at any given time.
 
 
@@ -7,7 +7,7 @@ Le Bird is a mini project created for a company coding challenge. The meat of th
 * [Technologies Used](#technologiesused)
 * [Features](#feautures)
 * [Main Page](#main)
-* [How to Locally Run Le Bird](#run)
+* [How to Locally Run Le Birds](#run)
 
 ### <a name="technologiesused"></a>Technologies Used
 
@@ -46,7 +46,7 @@ While using an AJAX get request, the bird species given is queried on the back e
 While using an AJAX get request, all birds are queried, looking specifically at all sightings against sightings that ocurred at the time of the request. Returned is the precentage likelihood you will see all birds at the time of the request. 
 
 
-### <a name="run"></a>How To Locally Run Le Bird
+### <a name="run"></a>How To Locally Run Le Birds
 
 #### Run Le Bird Flask App
 
