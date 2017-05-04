@@ -9,7 +9,6 @@ import datetime
 from flask import Flask, render_template, request, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 
-
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "ABC")
 app.jinja_env.undefined = StrictUndefined
@@ -23,6 +22,7 @@ def main_page():
 
 @app.route('/submit-bird', methods=['POST'])
 def add_sighting():
+	"""Submit bird sighting"""
 	
 	bird = request.form.get("bird").lower().strip()
 	quantity = request.form.get("quantity")
@@ -44,12 +44,13 @@ def view_sightings():
 	times = {}
 	
 	for sight in sightings:
-		if probability.get(sight.time) == None:
-			probability[sight.time] = sight.quantity
+		time = datetime.datetime.strptime(sight.time,'%H:%M:%S').strftime('%I:%M:%S %p')
+		if probability.get(time) == None:
+			probability[time] = sight.quantity
 		else:
-			probability[sight.time] += sight.quantity
-		if probability[sight.time] > most_sightings:
-			most_sightings = probability[sight.time]
+			probability[time] += sight.quantity
+		if probability[time] > most_sightings:
+			most_sightings = probability[time]
 			
 	for sight in probability:
 		if probability[sight] == most_sightings:
