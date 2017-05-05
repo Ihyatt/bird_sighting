@@ -27,9 +27,9 @@ Le Bird is a mini project created for a company coding challenge. The meat of th
 
 #### Current
 
-- [x] Add sighting of bird type and quantity to database.
+- [x] Add sighting of bird type, time and quantity to database.
 - [x] Find best time to view a paticular bird. 
-- [x] View petcentage of seeing all birds at any given second.
+- [x] View petcentage of seeing all birds at any given time.
 
 
 #### <a name="main"></a>Main Page
@@ -37,7 +37,7 @@ Le Bird is a mini project created for a company coding challenge. The meat of th
 
 
 ##### Log Le Bird Sightings
-The meat of this is an AJAX post request that grabs the species of bird, time and quantity and is stored in the database
+The meat of this is an AJAX post request that grabs the species of bird, time and quantity and is stored in the database.
 
 ##### When to Find Le Bird
 While using an AJAX get request, the bird species given is queried on the back end to find the highest frequency of when sightings have ocurred. Returned is the time or times with the highest frequency of when the sightings ocurred along with probability you have to see the bird at that time. 
