@@ -80,7 +80,7 @@ def view_all_birds():
 			birds[sight.bird][0] += sight.quantity
 
 	for bird in birds:
-		birds_prob[bird] = int((float(birds[bird][0]) / float(birds[bird][1])) * 100)
+		birds_prob[bird] = int((float(birds[bird][0]) / birds[bird][1]) * 100)
 
 	return jsonify(birds_prob)
 
