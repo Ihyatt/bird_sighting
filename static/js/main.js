@@ -1,11 +1,10 @@
-// JS to show the best time for a sighting for a particular bird
+// *****************************************************************************
+// JS to show the best time with probability for a sighting of a particular bird
 
 function showChanceSighting(results) {
 	var returnedBird = results;
-	$("#bird-sighting").append("<div style='margin-top:10px;margin-bottom:10px;'>" + "Here are the time(s) you should check out Le Bird!" + "</div>")
-
 	for (var key in returnedBird){
-	$("#bird-sighting").append("<li>" + returnedBird[key] +" " + key + "</li>")
+	$("#bird-sighting").append("<li style = 'margin-top:10px;'>" + "with a " + returnedBird[key][1] + "% probability, you can see the " + returnedBird[key][0] + " at " + key + "</li>")
  };
 	$("#search").val("")
 }
@@ -21,6 +20,7 @@ function getProbability() {
 
 $(".search-sighting").click(getProbability)
 
+// *****************************************************************************
 // JS for submitting bird sightings
 
 function submitSighting() {
@@ -35,14 +35,15 @@ function submitSighting() {
 	};
 	if (submitBird.trim()) {
 		$.post("/submit-bird", submission);
-		$("#bird_species").val("")
-		$("#quantity").val("")
-		$("#time-submit").val("")
+		$("#bird_species").val("");
+		$("#quantity").val("");
+		$("#time-submit").val("");
 }
 }
 
 $("#add-sighting").click(submitSighting)
 
+// *****************************************************************************
 // JS for wanting to see all birds and probability for a particular time given
 
 function showAllBirds(results){
@@ -61,7 +62,8 @@ function viewAllBirds() {
 	};
 	$.get("/return-all-birds.json",submission, showAllBirds);
 	$("#view-probabilities").html("refresh le probabilities");
-	$("#all-birds").html("")
+	$("#time-probability").val("");
+	$("#all-birds").html("");
 }
 
 $("#view-probabilities").click(viewAllBirds)

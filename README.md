@@ -33,17 +33,17 @@ Le Bird is a mini project created for a company coding challenge. The meat of th
 
 
 #### <a name="main"></a>Main Page
-![le bird](https://cloud.githubusercontent.com/assets/11432315/25453779/11c710ac-2a7f-11e7-9b88-8b8ae6725cdb.gif)
+<!-- put gif here -->
 
 
 ##### Log Le Bird Sightings
-The meat of this is an AJAX post request that grabs the species of bird and quantity. The datetime module is used to grab the exact hour, minute and second the sighting has ocurred and is stored in the database. 
+The meat of this is an AJAX post request that grabs the species of bird, time and quantity and is stored in the database
 
 ##### When to Find Le Bird
-While using an AJAX get request, the bird species given is queried on the back end to find the highest frequency of when sightings have ocurred. Returned is the time or times with the highest frequency of when the sightings ocurred. 
+While using an AJAX get request, the bird species given is queried on the back end to find the highest frequency of when sightings have ocurred. Returned is the time or times with the highest frequency of when the sightings ocurred along with probability you have to see the bird at that time. 
 
 ##### Le Bird and Probability 
-While using an AJAX get request, all birds are queried, looking specifically at all sightings against sightings that ocurred at the time of the request. Returned is the precentage likelihood you will see all birds at the time of the request. 
+While using an AJAX get request, all birds are queried, looking specifically at all sightings against sightings that ocurred at the time given in the request. Returned is the precentage likelihood you will see all birds for the given time. 
 
 
 ### <a name="run"></a>How To Locally Run Le Birds
