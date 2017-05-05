@@ -35,7 +35,7 @@ def add_sighting():
 
 @app.route("/return-search.json", methods=['GET'])
 def view_sightings():
-	"""Returns all time(s) to look for a specific bird"""
+	"""Returns all best time(s) to look for a specific bird"""
 
 	bird = request.args.get("bird").lower().strip()
 	probability = {}
