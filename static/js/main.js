@@ -48,10 +48,10 @@ $("#add-sighting").click(submitSighting)
 
 function showAllBirds(results){
 	var returnedAllBirds = results;
-		$("#all-birds").append("<div style='margin-top:10px;margin-bottom:10px;'>" + "Here are the chances you have to see le birds!" + "</div>")
+		$("#all-birds").append("<div style='margin-top:10px;margin-bottom:10px;'>" + "At the time given..." + "</div>")
 
 	for (var key in returnedAllBirds){
-	$("#all-birds").append("<li>" + key + " " + returnedAllBirds[key] + "%" +  "</li>")
+	$("#all-birds").append("<li> You have a " + returnedAllBirds[key] + "%" + " chance of seeing the " + key +  "</li>")
  };
 }
 

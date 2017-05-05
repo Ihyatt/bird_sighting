@@ -28,7 +28,8 @@ class BirdSighting(unittest.TestCase):
 		"""tests the submission of bird sighting"""
 		result = self.client.post("/submit-bird",
 								data={"bird":"owl",
-								"quantity": "3"}, 
+								"quantity": "3", 
+								"time":"01:01:01"}, 
 								follow_redirects=True)
 		self.assertIn("sighting", result.data)
 		self.assertNotIn("Cool", result.data)
@@ -46,6 +47,7 @@ class BirdSighting(unittest.TestCase):
 	def test_view_all_birds(self):
 		"""tests the sighting of all birds"""
 		result = self.client.post("/return-all-birds.json", 
+								data={"time":"01:01:01"},
 								follow_redirects=True)
 		self.assertIn("le", result.data)
 		self.assertNotIn("Cool", result.data)
@@ -56,24 +58,14 @@ class TestBirdSightingDatabase(TestCase):
 
     def setUp(self):
         """Things to do before each test"""
-
         # Get the Flask test client
         self.client = app.test_client()
         # Show Flask errors that happen during tests
         app.config['TESTING'] = True
         # Connect to test database
         connect_to_db(app, "postgresql:///testdb")
-        # Create tables and add sample data
-        db.create_all()
-        # add example data to test database
-        """Create some sample data."""
-
-        # In case this is run more than once, empty out existing data
-        Sighting.query.delete()
-
         # Add sample sighting
         self.bird = Sighting(bird='owl', quantity= 3, time="11:00:00")
-
         # add all to the database
         db.session.add(self.bird)
         # commit changes

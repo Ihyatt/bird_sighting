@@ -10,6 +10,7 @@ db = SQLAlchemy()
 # Model definitions
 
 class Sighting(db.Model):
+    #Where sightings of birds will be stored
     __tablename__ = "sightings"
 
     sighting_id = db.Column(db.Integer, autoincrement=True, primary_key=True)

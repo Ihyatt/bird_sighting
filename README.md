@@ -1,4 +1,4 @@
-# [Le Birds](https://lebirds.herokuapp.com/)
+# [Le Birds](https://lebirds.herokuapp.com/) <--- Click on me : ) 
 Le Bird is a mini project created for a company coding challenge. The meat of this project is a learning algorithm that accurately predicts the likelihood of seeing a paticular bird or birds at any given time.
 
 
@@ -39,10 +39,10 @@ Le Bird is a mini project created for a company coding challenge. The meat of th
 ##### Log Le Bird Sightings
 The meat of this is an AJAX post request that grabs the species of bird, time and quantity and is stored in the database.
 
-##### When to Find Le Bird
+##### Le Bird Time and Probability 
 While using an AJAX get request, the bird species given is queried on the back end to find the highest frequency of when sightings have ocurred. Returned is the time or times with the highest frequency of when the sightings ocurred along with probability you have to see the bird at that time. 
 
-##### Le Bird and Probability 
+##### Le Time
 While using an AJAX get request, all birds are queried, looking specifically at all sightings against sightings that ocurred at the time given in the request. Returned is the precentage likelihood you will see all birds for the given time. 
 
 
@@ -62,3 +62,4 @@ While using an AJAX get request, all birds are queried, looking specifically at 
 * Start up the flask server:
    * `python server.py`
 * Go to localhost:5000 to see the web app
+
